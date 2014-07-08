@@ -21,49 +21,86 @@
           <h1 id="project_title">Localytics Data Viz Challenge</h1>
           <h2 id="project_tagline">First attempt</h2>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/sohan/data-viz-challenge/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/sohan/data-viz-challenge/tarball/master">Download this project as a tar.gz file</a>
-            </section>
         </header>
     </div>
 
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+        <h3>Methodology</h3>
+        <p>
+        I used the <code>pandas</code> python library to explore the raw <code>data.json</code> provided by the challenge. 
+        </p>
+        <h5>Ipython notebook showing data exploration</h5>
+        <iframe 
+          width="100%"
+          height="600px"
+          src="http://dl.dropboxusercontent.com/u/18936054/localytics_data_viz/Localytics%20Data%20Viz%20Challenge.html">
+        </iframe>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+        <p>
+        I then used the <code>folium</code> lib to generate a choropleth map to reveal how age and geography factor into the amount donated for the Sports and Environment categories.
+        </p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+        <h5>Amount donated vs. Ages 18-24 and Geography</h5>
+        <iframe 
+          width="100%"
+          height="400px"
+          src="http://dl.dropboxusercontent.com/u/18936054/localytics_data_viz/osm_18-24.html"></iframe>
+        </iframe>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+        <h5>Amount donated vs. Ages 25-34 and Geography</h5>
+        <iframe 
+          width="100%"
+          height="400px"
+          src="http://dl.dropboxusercontent.com/u/18936054/localytics_data_viz/osm_25-34.html"></iframe>
+        </iframe>
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+        <h5>Amount donated vs. Ages 35-44 and Geography</h5>
+        <iframe 
+          width="100%"
+          height="400px"
+          src="http://dl.dropboxusercontent.com/u/18936054/localytics_data_viz/osm_35-44.html"></iframe>
+        </iframe>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+        <h5>Amount donated vs. Ages 45-54 and Geography</h5>
+        <iframe 
+          width="100%"
+          height="400px"
+          src="http://dl.dropboxusercontent.com/u/18936054/localytics_data_viz/osm_45-54.html"></iframe>
+        </iframe>
+  
+        <h5>Amount donated vs. Ages 55+ and Geography</h5>
+        <iframe 
+          width="100%"
+          height="400px"
+          src="http://dl.dropboxusercontent.com/u/18936054/localytics_data_viz/osm_55%2B.html"></iframe>
+        </iframe>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+        <h3>Conclusions</h3>
+        <p>
+        Looking at the hotspots in the maps above, we can see that users aged 18-24 in Oregon and Colorado significantly out-donate the other age groups on those states.
+        Therefore, this analysis suggests that BootLoader sends a push notification to all users aged 18-24 in Oregon and Colorado.
+        </p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+        <h3>Limitations</h3>
+        <p>
+        The granularity of the map is also state-wide; looking at donation amounts by zip code or city could allow better targeting. 
+        It looks like Boulder, CO; Portland, OR; and Atlanta, GA are the actual hotspots.
+        </p>
+        <p>
+        My visualization only considers amount donated vs. age and geography. 
+        We could split the data into many different ways (by gender, device, geography, etc. and combinations of those). 
+        </p>
+        <p>
+        Because I present one view of the data, my visualization does not enable a BootLoader employee to dynamically explore the data.
+        A possible improvement could be: allow the user to select the split key (age, gender, device, marital_status), and then generate the choropleth maps based on their selection.
+        I also produce <code>n</code> maps, where <code>n</code> is the number of possible values for any split key.
+        Figuring out a representation that could reduce the <code>n</code> maps into one would be a huge improvement.
+        </p>
       </section>
     </div>
+
 
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
